@@ -38,14 +38,20 @@ const Search = () => {
         Saved Places
       </SavedPlaces>
       <ConfirmContainer>
-        <Link
-          href={{
-            pathname: "/confirm",
-            query: { pickup: pickup, dropoff: dropoff },
-          }}
-        >
-          <ConfirmButton>Confirm Locations</ConfirmButton>
-        </Link>
+        {pickup !== "" && dropoff !== "" ? (
+          <Link
+            href={{
+              pathname: "/confirm",
+              query: { pickup: pickup, dropoff: dropoff },
+            }}
+          >
+            <ConfirmButton>Confirm Locations</ConfirmButton>
+          </Link>
+        ) : (
+          <Link href="#">
+            <ConfirmButton>Confirm Locations</ConfirmButton>
+          </Link>
+        )}
       </ConfirmContainer>
     </Wrapper>
   );
