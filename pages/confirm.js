@@ -14,7 +14,6 @@ const Confirm = () => {
   const { pickup, dropoff } = router.query;
 
   const getPickCoordinates = (pickup) => {
-    // if (!pickup) return;
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${pickup}.json?` +
         new URLSearchParams({
@@ -29,7 +28,6 @@ const Confirm = () => {
   };
 
   const getDropoffCoordinates = (dropoff) => {
-    // if (!dropoff) return;
     fetch(
       `https://api.mapbox.com/geocoding/v5/mapbox.places/${dropoff}.json?` +
         new URLSearchParams({
@@ -39,13 +37,17 @@ const Confirm = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        // console.log("newData", data);
+
         setDropoffCoordinates(data.features[0].center);
       });
   };
 
   useEffect(() => {
-    getPickCoordinates(pickup);
-    getDropoffCoordinates(dropoff);
+    if (getPickCoordinates[0] !== 0 && getDropoffCoordinates[0] !== 0) {
+      getPickCoordinates(pickup);
+      getDropoffCoordinates(dropoff);
+    }
   }, [pickup, dropoff]);
 
   return (
