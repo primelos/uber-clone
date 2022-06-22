@@ -48,5 +48,5 @@ const Title = tw.div`
 `;
 
 const HeadImage = tw.img`
-  object-contain w-full
+  object-contain w-full h-3/4
 `;
