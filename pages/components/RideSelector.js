@@ -13,7 +13,7 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates }) => {
     )
       .then((res) => res.json())
       .then((data) => {
-        if (data.routes) setRideDuration(data.routes[0].duration / 100);
+        if (data?.routes) setRideDuration(data?.routes[0]?.duration / 100);
       });
   }, [pickupCoordinates, dropoffCoordinates]);
 
@@ -41,7 +41,6 @@ const RideSelector = ({ pickupCoordinates, dropoffCoordinates }) => {
     </Wrapper>
   );
 };
-// console.log(carList);
 export default RideSelector;
 
 const Wrapper = tw.div`
